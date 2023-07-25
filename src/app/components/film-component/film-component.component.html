@@ -1,4 +1,9 @@
 <ion-content scrollEvents="true" (ionInfinite)="loadMoreMovies($event)">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down" pullingText="Puxe para atualizar..." refreshingSpinner="circles" refreshingText="Atualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
   <div>
     <ion-toolbar>
       <ion-searchbar (ionChange)="onSearch($event)" placeholder="Pesquisar"></ion-searchbar>
@@ -16,11 +21,11 @@
   <ion-list>
     <ion-item *ngFor="let movie of filteredMovies">
       <ion-card>
+        <div class="rating-badge">{{ movie.Rated }}</div>
         <ion-card-content>
           <img [src]="movie.Poster" alt="Movie Poster">
           <p>{{ movie.Title }}</p>
           <p>{{ movie.Year }}</p>
-          <p>{{ movie.Rated }}</p>
         </ion-card-content>
       </ion-card>
     </ion-item>

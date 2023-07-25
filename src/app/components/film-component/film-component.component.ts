@@ -83,4 +83,12 @@ export class FilmComponentComponent implements OnInit {
       event.target.complete();
     }
   }
+  async doRefresh(event: any) {
+    this.currentPage = 1; // Reinicia a página atual para a primeira página
+    this.totalResults = 0; // Reinicia o total de resultados para zero
+    this.movies = []; // Limpa a lista de filmes
+    this.filteredMovies = []; // Limpa a lista de filmes filtrados
+    await this.getMovies(); // Obtém a lista de filmes atualizada
+    event.target.complete(); // Finaliza o carregamento do ion-refresher
+  }
 }
