@@ -1,14 +1,33 @@
-<div>
-  <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
-  </ion-toolbar>
-</div>
+<ion-content scrollEvents="true" (ionInfinite)="loadMoreMovies($event)">
+  <div>
+    <ion-toolbar>
+      <ion-searchbar (ionChange)="onSearch($event)" placeholder="Pesquisar"></ion-searchbar>
+    </ion-toolbar>
+  </div>
 
-<ion-list>
   <ion-item>
-    <ion-select label="Filtrare i risultati" placeholder="Anno">
-      <ion-select-option value="Anno">Anno</ion-select-option>
-      <ion-select-option value="ordine alfabetico">Ordine alfabetico</ion-select-option>
-      <ion-select-option value="classificazione">Classificazione</ion-select-option>
+    <ion-select (ionChange)="onFilterChange($event)" placeholder="Filtrar por">
+      <ion-select-option value="Anno">Ano</ion-select-option>
+      <ion-select-option value="ordine alfabetico">Ordem alfabética</ion-select-option>
+      <ion-select-option value="classificazione">Classificação</ion-select-option>
     </ion-select>
   </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let movie of filteredMovies">
+      <ion-card>
+        <ion-card-content>
+          <img [src]="movie.Poster" alt="Movie Poster">
+          <p>{{ movie.Title }}</p>
+          <p>{{ movie.Year }}</p>
+          <p>{{ movie.Rated }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMoreMovies($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais filmes...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-  <img src="../../assets/PopFlix2.png" alt="Logo_image" class="center-image">
+    <img src="../../assets/PopFlix2.png" alt="Logo_image" class="center-image">
   </ion-toolbar>
 </ion-header>
 
@@ -15,11 +15,7 @@
   </ion-segment>
 
   
-  <div *ngIf="selectedSegment === 'film'">
-    <app-film-component></app-film-component>
-  </div>
-
-  <div *ngIf="selectedSegment === 'serie'">
-    <app-serie-component></app-serie-component>
-  </div>
+    <app-film-component *ngIf="selectedSegment === 'film'"></app-film-component>
+    <app-serie-component *ngIf="selectedSegment === 'serie'"></app-serie-component>
+  
 </ion-content>
