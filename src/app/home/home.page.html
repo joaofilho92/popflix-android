@@ -1,20 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <img src="../../assets/PopFlix2.png" alt="Logo_image" class="center-image">
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-segment [(ngModel)]="selectedSegment">
+    <ion-segment-button value="film">
+      Film
+    </ion-segment-button>
+    <ion-segment-button value="serie">
+      Serie
+    </ion-segment-button>
+  </ion-segment>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- Conteúdo dinâmico baseado na seleção do segmento -->
+  <div *ngIf="selectedSegment === 'film'">
+    <app-film-component></app-film-component>
+  </div>
+
+  <div *ngIf="selectedSegment === 'serie'">
+    <app-serie-component></app-serie-component>
   </div>
 </ion-content>
