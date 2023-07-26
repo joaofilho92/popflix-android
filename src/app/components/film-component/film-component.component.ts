@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
+import { ModalController } from '@ionic/angular'; // Importe o ModalController
+
+import { MovieDetailsModalComponent } from '../../components/movie-details-modal-component/movie-details-modal-component.component'; // Importe o componente do modal aqui
 
 @Component({
   selector: 'app-film-component',
@@ -17,7 +20,8 @@ export class FilmComponentComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-      ) {}
+    private modalController: ModalController
+  ) {}
 
   ngOnInit() {
     this.getMovies();
@@ -94,4 +98,34 @@ export class FilmComponentComponent implements OnInit {
     event.target.complete(); // Finaliza o carregamento do ion-refresher
   }
 
+  async showMovieDetails(movieId: string) {
+    try {
+      const movieDetails = await this.movieService.getMovieById(movieId);
+      // Agora você possui todas as informações detalhadas do filme em 'movieDetails'
+      console.log(movieDetails);
+      // Exiba as informações detalhadas do filme em uma janela modal ou em uma página separada
+      // ...
+    } catch (error) {
+      console.error('Erro ao obter informações do filme:', error);
+    }
+  }
+
+  async openMovieDetailsModal(movie: any) {
+    try {
+      // Obter informações completas do filme pelo ID
+      const movieDetails = await this.movieService.getMovieDetailsById(
+        movie.imdbID
+      );
+
+      const modal = await this.modalController.create({
+        component: MovieDetailsModalComponent,
+        componentProps: { movie: movieDetails }, // Passa o objeto de informações completas do filme para o modal
+        cssClass: 'custom-modal-class', // Adicione uma classe CSS personalizada para o modal (opcional)
+      });
+
+      await modal.present();
+    } catch (error) {
+      console.error('Erro ao obter informações do filme:', error);
+    }
+  }
 }

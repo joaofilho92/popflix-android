@@ -7,10 +7,12 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { FilmComponentComponent } from '../components/film-component/film-component.component';
 import { SerieComponentComponent } from '../components/serie-component/serie-component.component';
+import { MovieDetailsModalComponent } from '../components/movie-details-modal-component/movie-details-modal-component.component';
 
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
-  declarations: [HomePage, FilmComponentComponent, SerieComponentComponent],
+  declarations: [HomePage, FilmComponentComponent, SerieComponentComponent, MovieDetailsModalComponent],
+  
 })
 export class HomePageModule {}

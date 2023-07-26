@@ -19,9 +19,8 @@
   </ion-item>
 
   <ion-list>
-    <ion-item *ngFor="let movie of filteredMovies">
+    <ion-item *ngFor="let movie of filteredMovies" (click)="openMovieDetailsModal(movie)">
       <ion-card>
-        <div class="rating-badge">{{ movie.Rated }}</div>
         <ion-card-content>
           <img [src]="movie.Poster" alt="Movie Poster">
           <p>{{ movie.Title }}</p>
