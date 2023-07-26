@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
+import { ModalController } from '@ionic/angular';
+import { SerieDetailsModalComponent } from '../../components/serie-details-modal/serie-details-modal.component';
 
 @Component({
   selector: 'app-serie-component',
@@ -15,7 +17,10 @@ export class SerieComponentComponent implements OnInit {
   selectedFilter: string = 'Anno';
   searchQuery: string = '';
 
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit() {
     this.getSeries();
@@ -81,6 +86,25 @@ export class SerieComponentComponent implements OnInit {
     } catch (error) {
       console.error('Erro ao carregar mais séries:', error);
       event.target.complete();
+    }
+  }
+
+  async openSerieDetailsModal(serie: any) {
+    try {
+      // Obter informações completas da série pelo ID usando o serviço MovieService
+      const serieDetails = await this.movieService.getSerieDetailsById(
+        serie.imdbID
+      );
+
+      // Abrir o modal com as informações detalhadas da série
+      const modal = await this.modalController.create({
+        component: SerieDetailsModalComponent,
+        componentProps: { serie: serieDetails }, // Passar o objeto de informações completas da série para o modal
+      });
+
+      await modal.present();
+    } catch (error) {
+      console.error('Erro ao obter informações da série:', error);
     }
   }
 }

@@ -15,7 +15,7 @@
 
   <ion-list>
     <ion-item *ngFor="let serie of filteredSeries">
-      <ion-card>
+      <ion-card (click)="openSerieDetailsModal(serie)">
         <ion-card-content>
           <img [src]="serie.Poster" alt="Serie Poster">
           <p>{{ serie.Title }}</p>

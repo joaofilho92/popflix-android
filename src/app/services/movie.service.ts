@@ -32,4 +32,9 @@ export class MovieService {
     const queryUrl = `${this.apiUrl}?s=series&type=series&page=${page}&apikey=${this.apiKey}`;
     return this.http.get(queryUrl).toPromise();
   }
+
+  getSerieDetailsById(serieId: string): Promise<any> {
+    const queryUrl = `${this.apiUrl}?i=${serieId}&apikey=${this.apiKey}`;
+    return this.http.get(queryUrl).toPromise();
+  }
 }

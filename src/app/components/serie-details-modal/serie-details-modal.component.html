@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ serie?.Title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding conteudo">
+  <img [src]="serie?.Poster" alt="Movie Poster" class="poster"> <!-- Exibe o pôster do filme -->
+  <div class="anno">
+  <p><ion-icon name="star"></ion-icon> {{ serie?.imdbRating }}</p> <!-- Exibe a classificação do filme -->
+  <p>{{ serie?.Year }}</p> <!-- Exibe o ano do filme -->
+  </div>
+  <p class="p1">Genere</p>
+  <p>{{ serie?.Genre }}</p> <!-- Exibe o gênero do filme -->
+  <p>{{ serie?.Plot }}</p> <!-- Exibe a sinopse do filme -->
+  <p class="p1">Direttore</p>
+  <p>{{ serie?.Director }}</p>
+  <p class="p1">Attori</p>
+  <p>{{ serie?.Actors }}</p>
+</ion-content>

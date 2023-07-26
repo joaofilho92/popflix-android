@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { ModalController } from '@ionic/angular'; // Importe o ModalController
 
-import { MovieDetailsModalComponent } from '../../components/movie-details-modal-component/movie-details-modal-component.component'; // Importe o componente do modal aqui
+import { MovieDetailsModalComponent } from '../movie-details-modal-component/movie-details-modal-component.component'; // Importe o componente do modal aqui
 
 @Component({
   selector: 'app-film-component',

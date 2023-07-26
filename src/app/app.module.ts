@@ -6,9 +6,10 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SerieDetailsModalComponent } from './components/serie-details-modal/serie-details-modal.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SerieDetailsModalComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
