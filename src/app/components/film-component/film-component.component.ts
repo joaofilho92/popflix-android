@@ -15,7 +15,9 @@ export class FilmComponentComponent implements OnInit {
   selectedFilter: string = 'Anno';
   searchQuery: string = '';
 
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+      ) {}
 
   ngOnInit() {
     this.getMovies();
@@ -91,4 +93,5 @@ export class FilmComponentComponent implements OnInit {
     await this.getMovies(); // Obtém a lista de filmes atualizada
     event.target.complete(); // Finaliza o carregamento do ion-refresher
   }
+
 }
