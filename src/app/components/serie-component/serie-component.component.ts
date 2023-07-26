@@ -29,13 +29,13 @@ export class SerieComponentComponent implements OnInit {
   async getSeries() {
     try {
       const response = await this.movieService.getSeries(this.currentPage);
-      console.log(response); // Verifique se os dados estão sendo recebidos corretamente
+      console.log(response); 
       this.totalResults = +response.totalResults || 0;
       this.series = response.Search || [];
       this.filteredSeries = this.series;
-      console.log(this.series); // Verifique se as séries estão sendo armazenadas corretamente
+      console.log(this.series); 
     } catch (error) {
-      console.error('Erro ao obter lista de séries:', error);
+      console.error('Errore durante il recupero', error);
     }
   }
 
@@ -67,10 +67,9 @@ export class SerieComponentComponent implements OnInit {
     }
   }
 
-  // Método para carregar mais séries ao rolar a página (carregamento infinito)
+  
   async loadMoreSeries(event: any) {
     if (this.series.length >= this.totalResults) {
-      // Todas as séries já foram carregadas, desabilita o carregamento infinito
       event.target.complete();
       event.target.disabled = true;
       return;
@@ -81,30 +80,29 @@ export class SerieComponentComponent implements OnInit {
       const response = await this.movieService.getSeries(this.currentPage);
       const newSeries = response.Search || [];
       this.series.push(...newSeries);
-      this.filterSeries(); // Reaplica o filtro na lista atualizada
+      this.filterSeries(); 
       event.target.complete();
     } catch (error) {
-      console.error('Erro ao carregar mais séries:', error);
+      console.error('Errore durante il recupero', error);
       event.target.complete();
     }
   }
 
   async openSerieDetailsModal(serie: any) {
     try {
-      // Obter informações completas da série pelo ID usando o serviço MovieService
       const serieDetails = await this.movieService.getSerieDetailsById(
         serie.imdbID
       );
 
-      // Abrir o modal com as informações detalhadas da série
+      
       const modal = await this.modalController.create({
         component: SerieDetailsModalComponent,
-        componentProps: { serie: serieDetails }, // Passar o objeto de informações completas da série para o modal
+        componentProps: { serie: serieDetails }, 
       });
 
       await modal.present();
     } catch (error) {
-      console.error('Erro ao obter informações da série:', error);
+      console.error('Errore durante il recupero ', error);
     }
   }
 }

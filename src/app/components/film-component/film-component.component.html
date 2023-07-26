@@ -1,20 +1,20 @@
 <ion-content scrollEvents="true" (ionInfinite)="loadMoreMovies($event)">
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-down" pullingText="Puxe para atualizar..." refreshingSpinner="circles" refreshingText="Atualizando...">
+    <ion-refresher-content pullingIcon="arrow-down" pullingText="Aggiornare..." refreshingSpinner="circles" refreshingText="In aggiornamento...">
     </ion-refresher-content>
   </ion-refresher>
   
   <div>
     <ion-toolbar>
-      <ion-searchbar (ionChange)="onSearch($event)" placeholder="Pesquisar"></ion-searchbar>
+      <ion-searchbar (ionChange)="onSearch($event)" placeholder="Cercare"></ion-searchbar>
     </ion-toolbar>
   </div>
 
   <ion-item>
-    <ion-select (ionChange)="onFilterChange($event)" placeholder="Filtrar por">
-      <ion-select-option value="Anno">Ano</ion-select-option>
-      <ion-select-option value="ordine alfabetico">Ordem alfabética</ion-select-option>
-      <ion-select-option value="classificazione">Classificação</ion-select-option>
+    <ion-select (ionChange)="onFilterChange($event)" placeholder="filtra per">
+      <ion-select-option value="Anno">Anno</ion-select-option>
+      <ion-select-option value="ordine alfabetico">Ordine alfabetico</ion-select-option>
+      <ion-select-option value="classificazione">Valutazione</ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -31,7 +31,7 @@
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="loadMoreMovies($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais filmes...">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Caricamento di altri film...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

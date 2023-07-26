@@ -1,15 +1,15 @@
 <ion-content scrollEvents="true" (ionInfinite)="loadMoreSeries($event)">
   <div>
     <ion-toolbar>
-      <ion-searchbar (ionChange)="onSearch($event)" placeholder="Pesquisar"></ion-searchbar>
+      <ion-searchbar (ionChange)="onSearch($event)" placeholder="Cercare"></ion-searchbar>
     </ion-toolbar>
   </div>
 
   <ion-item>
-    <ion-select (ionChange)="onFilterChange($event)" placeholder="Filtrar por">
-      <ion-select-option value="Anno">Ano</ion-select-option>
-      <ion-select-option value="ordine alfabetico">Ordem alfabética</ion-select-option>
-      <ion-select-option value="classificazione">Classificação</ion-select-option>
+    <ion-select (ionChange)="onFilterChange($event)" placeholder="filtra per">
+      <ion-select-option value="Anno">Anno</ion-select-option>
+      <ion-select-option value="ordine alfabetico">Ordine alfabetico</ion-select-option>
+      <ion-select-option value="classificazione">Valutazione</ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -17,7 +17,7 @@
     <ion-item *ngFor="let serie of filteredSeries">
       <ion-card (click)="openSerieDetailsModal(serie)">
         <ion-card-content>
-          <img [src]="serie.Poster" alt="Serie Poster">
+          <img [src]="serie.Poster" alt="Serie_Poster">
           <p>{{ serie.Title }}</p>
           <p>{{ serie.Year }}</p>
           <p>{{ serie.Rated }}</p>
@@ -27,7 +27,7 @@
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="loadMoreSeries($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais séries...">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Caricamento di più serie...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

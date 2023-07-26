@@ -8,14 +8,14 @@
 </ion-header>
 
 <ion-content class="ion-padding conteudo">
-  <img [src]="serie?.Poster" alt="Movie Poster" class="poster"> <!-- Exibe o pôster do filme -->
+  <img [src]="serie?.Poster" alt="Movie_Poster" class="poster"> 
   <div class="anno">
-  <p><ion-icon name="star"></ion-icon> {{ serie?.imdbRating }}</p> <!-- Exibe a classificação do filme -->
-  <p>{{ serie?.Year }}</p> <!-- Exibe o ano do filme -->
+  <p><ion-icon name="star"></ion-icon> {{ serie?.imdbRating }}</p> 
+  <p>{{ serie?.Year }}</p> 
   </div>
   <p class="p1">Genere</p>
-  <p>{{ serie?.Genre }}</p> <!-- Exibe o gênero do filme -->
-  <p>{{ serie?.Plot }}</p> <!-- Exibe a sinopse do filme -->
+  <p>{{ serie?.Genre }}</p> 
+  <p>{{ serie?.Plot }}</p> 
   <p class="p1">Direttore</p>
   <p>{{ serie?.Director }}</p>
   <p class="p1">Attori</p>

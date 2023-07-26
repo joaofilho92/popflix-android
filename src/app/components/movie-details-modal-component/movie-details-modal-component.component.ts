@@ -7,7 +7,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./movie-details-modal-component.component.scss'],
 })
 export class MovieDetailsModalComponent {
-  @Input() movie: any; // Recebe o objeto do filme do componente pai
+  @Input() movie: any; 
 
   constructor(private modalController: ModalController) {}
 

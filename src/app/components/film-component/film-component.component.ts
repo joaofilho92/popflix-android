@@ -30,13 +30,14 @@ export class FilmComponentComponent implements OnInit {
   async getMovies() {
     try {
       const response = await this.movieService.getMovies(this.currentPage);
-      console.log(response); // Verifique se os dados estão sendo recebidos corretamente
+      console.log(response); 
       this.totalResults = +response.totalResults || 0;
       this.movies = response.Search || [];
       this.filteredMovies = this.movies;
-      console.log(this.movies); // Verifique se os filmes estão sendo armazenados corretamente
+      
+      
     } catch (error) {
-      console.error('Erro ao obter lista de filmes:', error);
+      console.error('Errore durante il recupero della lista', error);
     }
   }
 
@@ -68,10 +69,8 @@ export class FilmComponentComponent implements OnInit {
     }
   }
 
-  // Método para carregar mais filmes ao rolar a página (carregamento infinito)
   async loadMoreMovies(event: any) {
     if (this.movies.length >= this.totalResults) {
-      // Todos os filmes já foram carregados, desabilita o carregamento infinito
       event.target.complete();
       event.target.disabled = true;
       return;
@@ -82,50 +81,46 @@ export class FilmComponentComponent implements OnInit {
       const response = await this.movieService.getMovies(this.currentPage);
       const newMovies = response.Search || [];
       this.movies.push(...newMovies);
-      this.filterMovies(); // Reaplica o filtro na lista atualizada
+      this.filterMovies(); 
       event.target.complete();
     } catch (error) {
-      console.error('Erro ao carregar mais filmes:', error);
+      console.error('Errore durante il recupero della lista', error);
       event.target.complete();
     }
   }
   async doRefresh(event: any) {
-    this.currentPage = 1; // Reinicia a página atual para a primeira página
-    this.totalResults = 0; // Reinicia o total de resultados para zero
-    this.movies = []; // Limpa a lista de filmes
-    this.filteredMovies = []; // Limpa a lista de filmes filtrados
-    await this.getMovies(); // Obtém a lista de filmes atualizada
-    event.target.complete(); // Finaliza o carregamento do ion-refresher
+    this.currentPage = 1; 
+    this.totalResults = 0; 
+    this.movies = []; 
+    this.filteredMovies = []; 
+    await this.getMovies(); 
+    event.target.complete(); 
   }
 
   async showMovieDetails(movieId: string) {
     try {
       const movieDetails = await this.movieService.getMovieById(movieId);
-      // Agora você possui todas as informações detalhadas do filme em 'movieDetails'
       console.log(movieDetails);
-      // Exiba as informações detalhadas do filme em uma janela modal ou em uma página separada
-      // ...
     } catch (error) {
-      console.error('Erro ao obter informações do filme:', error);
+      console.error('Errore durante il recupero della lista', error);
     }
   }
 
   async openMovieDetailsModal(movie: any) {
     try {
-      // Obter informações completas do filme pelo ID
       const movieDetails = await this.movieService.getMovieDetailsById(
         movie.imdbID
       );
 
       const modal = await this.modalController.create({
         component: MovieDetailsModalComponent,
-        componentProps: { movie: movieDetails }, // Passa o objeto de informações completas do filme para o modal
-        cssClass: 'custom-modal-class', // Adicione uma classe CSS personalizada para o modal (opcional)
+        componentProps: { movie: movieDetails }, 
+        cssClass: 'custom-modal-class', 
       });
 
       await modal.present();
     } catch (error) {
-      console.error('Erro ao obter informações do filme:', error);
+      console.error('Errore durante il recupero della lista', error);
     }
   }
 }

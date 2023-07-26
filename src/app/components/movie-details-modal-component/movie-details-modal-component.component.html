@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ movie?.Title }}</ion-title> <!-- Exibe o título do filme no header do modal -->
+    <ion-title>{{ movie?.Title }}</ion-title> 
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">Chiudi</ion-button>
     </ion-buttons>
@@ -8,14 +8,14 @@
 </ion-header>
 
 <ion-content class="ion-padding conteudo">
-  <img [src]="movie?.Poster" alt="Movie Poster" class="poster"> <!-- Exibe o pôster do filme -->
+  <img [src]="movie?.Poster" alt="Movie_Poster" class="poster"> 
   <div class="anno">
-  <p><ion-icon name="star"></ion-icon> {{ movie?.imdbRating }}</p> <!-- Exibe a classificação do filme -->
-  <p>{{ movie?.Year }}</p> <!-- Exibe o ano do filme -->
+  <p><ion-icon name="star"></ion-icon> {{ movie?.imdbRating }}</p> 
+  <p>{{ movie?.Year }}</p> 
   </div>
   <p class="p1">Genere</p>
-  <p>{{ movie?.Genre }}</p> <!-- Exibe o gênero do filme -->
-  <p>{{ movie?.Plot }}</p> <!-- Exibe a sinopse do filme -->
+  <p>{{ movie?.Genre }}</p> 
+  <p>{{ movie?.Plot }}</p> 
   <p class="p1">Direttore</p>
   <p>{{ movie?.Director }}</p>
   <p class="p1">Attori</p>
