@@ -23,5 +23,5 @@ l'idea non è quella di essere una piattaforma di streaming ma un APP Android.
 
 # API utilizzate 💻:
 
-[ThemovieDB](https://www.omdbapi.com/)<br>
+[OMDBApi](https://www.omdbapi.com/)<br>
 
