@@ -4,8 +4,8 @@
 
 # Obiettivo del progetto: 
 
-Creare un'applicazione in Angular/Ionic/Capacitor che vada oltre l'essere una riproduzione di Netflix. 
-l'idea non è quella di essere una piattaforma di streaming ma un APP Android.
+Crea un'app Angular/Ionic/Capacitor che va oltre l'essere una riproduzione Netflix.
+L'idea non è quella di essere una piattaforma di streaming ma un'APP che utilizza Angular, typescript e una super struttura di componenti e alla fine si trasforma in un'applicazione Android utilizzando Capacitor.
 
 # Features 🚀:
 
